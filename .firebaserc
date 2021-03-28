@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "jabhunter-dcc6a": {
+      "hosting": {
+        "jabhunter": [
+          "jabhunter-dcc6a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "jabhunter-dcc6a"
+  }
+}
