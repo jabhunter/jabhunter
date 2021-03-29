@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './material.module';
+import { NgxDocViewerModule } from 'ngx-doc-viewer';
 
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
@@ -13,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './navigation/header/header.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -34,12 +36,14 @@ import { from } from 'rxjs';
     FormsModule,
     HttpClientModule,
     MaterialModule,
+    NgxDocViewerModule,
     ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
+    FaqComponent,
     FooterComponent,
     SidenavListComponent,
     PageNotFoundComponent
