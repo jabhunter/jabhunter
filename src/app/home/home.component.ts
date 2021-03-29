@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleSheetsDbService } from 'ng-google-sheets-db';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { Location, locationAttributesMapping } from '../location.model';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  locations$: Observable<Location[]>;
 
-  constructor() { }
+  constructor(private googleSheetsDbService: GoogleSheetsDbService) { 
+    this.locations$ = this.googleSheetsDbService.getActive<Location>(
+      environment.locations.spreadsheetId,
+      environment.locations.worksheetId,
+      locationAttributesMapping,
+      "Active"
+    );
+  }
 
   ngOnInit(): void {
   }

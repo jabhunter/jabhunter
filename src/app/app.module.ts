@@ -5,6 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './material.module';
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
+import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
@@ -51,7 +52,7 @@ import { from } from 'rxjs';
   exports: [
 
   ],
-  providers: [],
+  providers: [GoogleSheetsDbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
