@@ -1,39 +1,62 @@
-<!-- Toolbar -->
-<p>
-  <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>JabHunter</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
-
-<!-- <div class="content" role="main"> -->
-
-  <!-- Resources -->
-  <!-- <h2>Jab Hunter</h2>
-  <p>Find extra vaccine doses before they go to waste.</p>
-  <mat-slider min="1" max="100" step="1" value="1"></mat-slider> -->
-
-  <!-- Footer -->
-  <!-- <footer>
-      <a href="https://github.com/johnwcode/jabhunter" target="_blank" rel="noopener"> GitHub Repo.
-        <div class="github-star-badge">
-            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          Star
-        </div>
-      </a>
-      <a href="https://github.com/johnwcode/jabhunter" target="_blank" rel="noopener">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-      </a>
-  </footer> -->
-<!-- </div> -->
-
+<app-header></app-header>
 <router-outlet></router-outlet>
+<app-footer></app-footer>
+
+
+
+<!-- <mat-sidenav-container fullscreen>
+	<mat-sidenav #exampleSidenav class="example-sidenav mat-elevation-z3" [mode]="isMobile ? 'over' : 'side'">
+    <mat-toolbar>
+      Links
+      <span fxFlex></span>
+      <button mat-icon-button (click)="exampleSidenav.close()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+    </mat-toolbar>
+		<mat-nav-list style="z-index: 2">
+			<a mat-list-item routerLink="/home" routerLinkActive="active-link" (click)="exampleSidenav.close()">Home</a>
+			<a mat-list-item routerLink="/about" routerLinkActive="active-link" (click)="exampleSidenav.close()">About</a>
+			<a mat-list-item (click)="toggleGuides()">
+				<p matLine>Guides</p>
+				<mat-icon [class.isToggled]="hideGuides" class="toggle-component-icon" [class.isUnToggled]="!hideGuides">keyboard_arrow_down</mat-icon>
+			</a>
+		</mat-nav-list>
+    		<div *ngIf="hideGuides" class="guide-examples-sect" @enterAnimation>
+          <mat-nav-list>
+            <a mat-list-item *ngFor="let guideLink of guideLinks" [routerLink]="['/guides', guideLink.url]" routerLinkActive="active-link" (click)="exampleSidenav.close(); changeTitle(guideLink.name)">
+            <p matLine>{{guideLink.name}}</p>
+            </a>
+          </mat-nav-list>
+    		</div>
+		<mat-nav-list>
+			<a mat-list-item (click)="toggleComponents()">
+				<p matLine>Components</p>
+				<mat-icon [class.isToggled]="hideComponents" class="toggle-component-icon" [class.isUnToggled]="!hideComponents">keyboard_arrow_down</mat-icon>
+			</a>
+		</mat-nav-list>
+		<div *ngIf="hideComponents" class="component-examples-sect" @enterAnimation>
+			<mat-nav-list *ngFor="let exampleLink of exampleLinks">
+				<h3 matSubheader>{{exampleLink.category}}</h3>
+				<a mat-list-item *ngFor="let example of exampleLink.examples" [routerLink]="['/components', exampleLink.url, example.url]"
+				 routerLinkActive="active-link" (click)="exampleSidenav.close(); changeTitle(example.name)"><p matLine>{{example.name}}</p></a>
+			</mat-nav-list>
+		</div>
+	</mat-sidenav>
+	<mat-toolbar color="primary" class="mat-elevation-z3">
+		<button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button> Material Docs Examples
+    >
+      {{title}}
+		<span fxFlex></span>
+		<button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item (click)="toggleUppercase()">
+        Toggle uppercase&emsp;
+        <mat-pseudo-checkbox state="{{isToggledUppercase ? 'checked':'unchecked'}}"></mat-pseudo-checkbox>
+      </button>
+      <a mat-menu-item href="https://stackblitz.com/edit/material2-docs-all-examples" target="_blank">
+        <mat-icon>code</mat-icon> Source code
+      </a>
+		</mat-menu>
+	</mat-toolbar>
+	<div class="app-content">
+		<router-outlet></router-outlet>
+	</div>
+</mat-sidenav-container> -->

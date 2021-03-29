@@ -3,25 +3,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MaterialModule } from './material.module';
+
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './navigation/header/header.component';
+import { FooterComponent } from './navigation/footer/footer.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { from } from 'rxjs';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     AngularFireAnalyticsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -31,11 +33,19 @@ import { environment } from '../environments/environment';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    MatIconModule,
-    MatNativeDateModule,
-    MatSliderModule,
-    MatToolbarModule,
+    MaterialModule,
     ReactiveFormsModule
+  ],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    HomeComponent,
+    FooterComponent,
+    SidenavListComponent,
+    PageNotFoundComponent
+  ],
+  exports: [
+
   ],
   providers: [],
   bootstrap: [AppComponent]
