@@ -1,8 +1,6 @@
 <mat-card>
-	<mat-card-title>Jab Hunter</mat-card-title>
+	<mat-card-title>Locations</mat-card-title>
 	<mat-card-content>
-		<p>Let the hunt for extra vaccine doses begin!</p>
-		<h3>Locations</h3>
 		<mat-divider></mat-divider>
 		<div *ngIf="locations$ | async as locations; else loading">
 		<div *ngFor="let location of locations" class="character-card">
