@@ -1,81 +1,72 @@
 
-<section>
-	<div class="home-flex-container">
-		<div class="home-button-row">
-			<a mat-flat-button color="primary" href="https://docs.google.com/forms/d/e/1FAIpQLScLDkpL6MFfeY2r6xZdyTrB94ZXT5P4XJN6c2tRcdwMDwtuMg/viewform" target="_blank">Add/Update a Location</a>
-			<a mat-flat-button color="primary" href="https://forms.aweber.com/form/07/131622307.htm" target="_blank">Sign Up</a>
-			<a mat-flat-button color="primary" routerLink="/howto">How to</a>
-		</div>
+<div class="home-button-row">
+	<div class="home-flex-container mat-button-base">
+		<a mat-flat-button color="accent" href="https://docs.google.com/forms/d/e/1FAIpQLScLDkpL6MFfeY2r6xZdyTrB94ZXT5P4XJN6c2tRcdwMDwtuMg/viewform" target="_blank">Add Report</a>
+		<a mat-flat-button color="primary" href="https://forms.aweber.com/form/07/131622307.htm" target="_blank">Get Notified</a>
+		<a mat-flat-button color="primary" routerLink="/howto">How to Hunt</a>
 	</div>
-  </section>
+</div>
+<mat-divider></mat-divider>
+<div class="home-title-flex-container mat-display-1">Latest Hunting Reports</div>
 
-<mat-card>
-	<mat-card-title>Locations</mat-card-title>
-	<mat-card-content>
-		<mat-divider></mat-divider>
-		<div *ngIf="locations$ | async as locations; else loading">
-		<div *ngFor="let location of locations" class="character-card">
-			<div class="name">
-			{{ location.name }}
-			</div>
-			<div class="row">
-			<div class="column">
-				<table class="email-contact">
-				<tr>
-					<td></td>
-					<td>{{ location.locationType }}</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td class="email">
-					{{ location.phone || '-' }}
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<svg style="width:14px;height:14px" viewBox="0 0 24 24">
-						<path fill="currentColor"
-						d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" />
-					</svg>
-					</td>
-					<td>
-					{{ location.address.streetNumber }} {{ location.address.street }}<br>
-					{{ location.address.city }}, CA  {{ location.address.zip }}
-					</td>
+<div *ngIf="locations$ | async as locations; else loading">
+<div *ngFor="let location of locations">
+	<mat-accordion>
+		<!-- #docregion basic-panel -->
+		<!-- #docregion hide-toggle -->
+		<mat-expansion-panel (opened)="panelOpenState = true"
+                       		 (closed)="panelOpenState = false">
+		  <!-- #enddocregion hide-toggle -->
+		  <mat-expansion-panel-header>
+			<mat-panel-title>
+				{{ location.lastUpdated || 'No Updates' }}
+			</mat-panel-title>
+			<mat-panel-description>
+				{{ location.address.city + ',' || ''}} {{ location.name || ''}} 
+			</mat-panel-description>
+		  </mat-expansion-panel-header>
+			<mat-list>
+				<mat-list-item>
+					<a href="tel:{{location.phone}}" matLine>
+						<button mat-icon-button aria-label="Call">
+						  <mat-icon>call</mat-icon>
+						</button>
+						<span> {{ location.phone || '-' }} </span>
+					</a>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-icon matListIcon>place</mat-icon>
+					<a href="https://www.google.com/maps/place/{{location.address.streetNumber + '+' + location.address.street + '+' + location.address.city + 'CA'}}" target="_blank" matLine> 
+					<p matLine> {{ location.address.streetNumber || '' }} {{ location.address.street || '' }}<br />
+						<span> {{ location.address.city + ', CA' || ''}} {{ location.address.zip || ''}} </span>
+					</p>
+					</a>
+				</mat-list-item>
+			</mat-list>
+			<p>
+			Location Type: {{ location.locationType || '-'}} 
+			</p>
+			<p>
+			Hunting Reports:<br />
+			<span *ngFor="let note of location.notes">{{ note }}<br /></span>
+			<span *ngIf="location.notes.length == 0" class="no-skills">no notes</span>
+			</p>
+			
+		</mat-expansion-panel>
+	  </mat-accordion>
+</div>
+</div>
 
-				</tr>
-				</table>
-			</div>
-			<div class="column">
-				<div class="skills">
-				<span>Notes</span>
-				<p>
-					<span *ngFor="let note of location.notes">{{ note }}<br /></span>
-					<!-- <span *ngFor="let note of location.notes">{{ note }}
-					</span> -->
-					<span *ngIf="location.notes.length == 0" class="no-skills">no notes</span>
-				</p>
-				<!-- <p><a href="{{ location.link }}">Link</a></p> -->
-				</div>
-			</div>
-			</div>
-			<mat-divider></mat-divider>
-		</div>
-		</div>
-    <ng-template #loading>
-      <div class=" loading">
-        <div class="lds-ripple">
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </ng-template>
-	</mat-card-content>
-</mat-card>
+<ng-template #loading>
+	<div class=" loading">
+	  <div class="lds-ripple">
+		<div></div>
+		<div></div>
+	  </div>
+	</div>
+  </ng-template>
 
-<div class="container">
-    
-</div>	
+
 
 
 <!-- 
