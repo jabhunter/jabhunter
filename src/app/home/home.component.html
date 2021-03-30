@@ -8,7 +8,8 @@
 </div>
 <mat-divider></mat-divider>
 <div class="home-title-flex-container mat-display-1">Latest Hunting Reports</div>
-
+<div class="home-subtitle-flex-container mat-body-1">Find expiring Covid-19 Vaccine Doses before they go to waste in Orange County, CA and the surrounding areas. <br />Going fast...get 'em while they're cold!</div>
+<mat-divider></mat-divider>
 <div *ngIf="locations$ | async as locations; else loading">
 <div *ngFor="let location of locations">
 	<mat-accordion>
@@ -36,7 +37,7 @@
 				</mat-list-item>
 				<mat-list-item>
 					<mat-icon matListIcon>place</mat-icon>
-					<a href="https://www.google.com/maps/place/{{location.address.streetNumber + '+' + location.address.street + '+' + location.address.city + 'CA'}}" target="_blank" matLine> 
+					<a href="https://www.google.com/maps/place/{{location.address.streetNumber + '+' + location.address.street + '+' + location.address.city + '+CA'}}" target="_blank" matLine> 
 					<p matLine> {{ location.address.streetNumber || '' }} {{ location.address.street || '' }}<br />
 						<span> {{ location.address.city + ', CA' || ''}} {{ location.address.zip || ''}} </span>
 					</p>

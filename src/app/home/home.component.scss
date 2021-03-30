@@ -22,7 +22,15 @@ a:link, a:visited {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin: 2%;
+  margin: 4% 2%;
+}
+
+.home-subtitle-flex-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  margin: 4% 2%;
 }
   
 
