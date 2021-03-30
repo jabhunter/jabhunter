@@ -17,6 +17,7 @@ import { FooterComponent } from './navigation/footer/footer.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
+import { HowToComponent } from './howto/howto.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
@@ -44,6 +45,7 @@ import { from } from 'rxjs';
     AppComponent,
     HeaderComponent,
     HomeComponent,
+    HowToComponent,
     FaqComponent,
     FooterComponent,
     SidenavListComponent,
