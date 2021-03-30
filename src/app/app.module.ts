@@ -18,6 +18,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 import { AngularFireModule } from '@angular/fire';
@@ -47,7 +48,8 @@ import { from } from 'rxjs';
     FaqComponent,
     FooterComponent,
     SidenavListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SignupComponent
   ],
   exports: [
 
