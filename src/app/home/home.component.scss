@@ -1,35 +1,30 @@
+.home-button-row .mat-button-base {
+  margin: 6px;
+}
 
-section {
-    display: table;
-  }
+a:link, a:visited {
+  text-decoration: none;
+}
+
+.home-flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 6px;
+}
+
+.home-mat-panel-description {
+  justify-content: left;
+}
+
+.home-title-flex-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: 2%;
+}
   
-  .home-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    min-width: 120px;
-  }
-  
-  .home-button-row {
-    display: table-cell;
-    width: 490px;
-  }
-  
-  .home-button-row .mat-button-base {
-    margin: 8px 8px 8px 0;
-  }
-  
-  .home-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .home-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
-  }
 
 /*
 Copyright Google LLC. All Rights Reserved.

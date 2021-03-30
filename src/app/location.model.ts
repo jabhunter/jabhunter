@@ -9,6 +9,7 @@ export const locationAttributesMapping = {
     zip: "Zip",
     city: "City"
   },
+  lastUpdated: "Last Updated",
   notes: {
     _prefix: "Note",
     _listField: true
@@ -31,6 +32,7 @@ export interface Location {
     zip: string;
     city: string;
   };
+  lastUpdated: string;
   notes: string[];
   noteDates: string[];
   locationType: string;
