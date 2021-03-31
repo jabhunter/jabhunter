@@ -43,6 +43,14 @@
 					</p>
 					</a>
 				</mat-list-item>
+				<mat-list-item>
+					<a href="{{location.link}}" matLine>
+						<button mat-icon-button aria-label="Call">
+						  <mat-icon>link</mat-icon>
+						</button>
+						<span> {{ location.link || '-' }} </span>
+					</a>
+				</mat-list-item>
 			</mat-list>
 			<p>
 			Location Type: {{ location.locationType || '-'}} 
