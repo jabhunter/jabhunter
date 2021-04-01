@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Location, locationAttributesMapping } from '../location.model';
-import { DomSanitizer } from '@angular/platform-browser';
-import { from } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -14,29 +11,82 @@ import { Pipe, PipeTransform } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  panelOpenState = false;
-  
-  locations$: Observable<Location[]>;
+  panelOpenState: boolean;
+  displayNone: string;
+  lineThrough: string;
+  spreadsheetId: string;
+  worksheetId: number;
+  address: string;
+  googleMap: string;
+  state: string;
+  city: string;
+  streetNumber: string;
+  street: string;
+  subscriptions: Subscription[] = [];
+  testArray: any;
 
-  constructor(private googleSheetsDbService: GoogleSheetsDbService, private sanitizer:DomSanitizer) { 
+  locations$: Observable<Location[]>;
+  // This component makes a request but it can't actually delete a hero.
+  @Output()
+  public sendData: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output()
+  public deleteRequest: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor(private googleSheetsDbService: GoogleSheetsDbService, private sanitizer: DomSanitizer) {
+    this.panelOpenState = false;
+    this.displayNone = "";
+    this.lineThrough = "";
+    this.address = ""
+    this.state = "CA"
+    this.city = ""
+    this.streetNumber = ""
+    this.street = ""
+    this.address = ""
+    this.googleMap = "https://www.google.com/maps/place/"
+    this.spreadsheetId = environment.locations.spreadsheetId;
+    this.worksheetId = environment.locations.worksheetId;
+
     this.locations$ = this.googleSheetsDbService.getActive<Location>(
-      environment.locations.spreadsheetId,
-      environment.locations.worksheetId,
+      this.spreadsheetId,
+      this.worksheetId,
       locationAttributesMapping,
       "Active"
     );
-  }
 
-  sanitize(url:string){
-    return this.sanitizer.bypassSecurityTrustUrl(url);
-  }
+    this.subscriptions = [
+      this.testArray = this.locations$.subscribe(res => console.log(res))
+    ]
+    console.log(this.testArray);
+    this.testArray.filter()
 
-  getSanitizedAddressUrl(url:string){
-    let addressUrl = `https://www.google.com/maps/place/`
-    return this.sanitizer.bypassSecurityTrustUrl(addressUrl);
   }
 
   ngOnInit(): void {
+  }
+
+  filterByZip(event: any): any {
+    const selectedZip = event.value
+    // this.testArray.filter(f => f.address.zip == selectedZip)
+    // switch 
+    // address // date // 
+  }
+
+  buildAddress(): void {
+    this.address = `${this.googleMap} ${this.streetNumber} ${this.street} ${this.city} ${this.state}`
+  }
+
+  item(item: any): void {
+    throw new Error('Method not implemented.');
+  }
+
+  sanitize(url: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+
+  getSanitizedAddressUrl(url: string): SafeUrl {
+    let addressUrl = `https://www.google.com/maps/place/`
+    return this.sanitizer.bypassSecurityTrustUrl(addressUrl);
   }
 
   someEvent = (e: MouseEvent) => {
@@ -46,30 +96,26 @@ export class HomeComponent implements OnInit {
   showTheObj = (objToShow: object) => {
     if (objToShow) {
       console.log(objToShow);
-        this.objToShow.emit(this.item);
-        this.displayNone = this.displayNone ? '' : 'none';
-        this.lineThrough = this.lineThrough ? '' : 'line-through';
-      }
-      const coolLocations = objToShow.pipe
+      this.sendData.emit(this.item);
+      this.displayNone = this.displayNone ? '' : 'none';
+      this.lineThrough = this.lineThrough ? '' : 'line-through';
     } else {
       console.log("nothing to show")
     }
   }
 
-  
 
-  public executeSelectedChange = (event: any, locations: object) => {
+
+  executeSelectedChange(event: any, locations: object): void {
     console.log(event);
 
     console.log(locations);
   }
+
+  deleteRequestFunction(): void {
+    this.deleteRequest.emit(this.item);
+    this.displayNone = this.displayNone ? '' : 'none';
+    this.lineThrough = this.lineThrough ? '' : 'line-through';
+  }
 }
 
-// This component makes a request but it can't actually delete a hero.
-@Output() deleteRequest = new EventEmitter<Item>();
-
-delete() {
-  this.deleteRequest.emit(this.item);
-  this.displayNone = this.displayNone ? '' : 'none';
-  this.lineThrough = this.lineThrough ? '' : 'line-through';
-}
