@@ -19,6 +19,7 @@ import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
 import { HowToComponent } from './howto/howto.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RenameCovidComponent } from './renamecovid/renamecovid.component'
 
 
 import { AngularFireModule } from '@angular/fire';
@@ -51,7 +52,8 @@ import { ExternalLinkDirective } from './external-link.directive';
     FaqComponent,
     FooterComponent,
     SidenavListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    RenameCovidComponent
   ],
   exports: [
 
