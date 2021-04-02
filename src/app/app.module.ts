@@ -7,8 +7,6 @@ import { MaterialModule } from './material.module';
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,7 +24,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
-import { from } from 'rxjs';
 import { ExternalLinkDirective } from './external-link.directive';
 
 @NgModule({

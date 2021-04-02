@@ -1,79 +1,76 @@
-
 <div class="home-button-row">
 	<div class="home-flex-container mat-button-base">
-		<a mat-flat-button color="accent" href="https://docs.google.com/forms/d/e/1FAIpQLScLDkpL6MFfeY2r6xZdyTrB94ZXT5P4XJN6c2tRcdwMDwtuMg/viewform" target="_blank">Add Report</a>
-		<a mat-flat-button color="primary" href="https://forms.aweber.com/form/07/131622307.htm" target="_blank">Get Notified</a>
+		<a mat-flat-button color="accent"
+			href="https://docs.google.com/forms/d/e/1FAIpQLScLDkpL6MFfeY2r6xZdyTrB94ZXT5P4XJN6c2tRcdwMDwtuMg/viewform"
+			target="_blank">Add Report</a>
+		<a mat-flat-button color="primary" href="https://forms.aweber.com/form/07/131622307.htm" target="_blank">Get
+			Notified</a>
 		<a mat-flat-button color="primary" routerLink="/howto">How to Hunt</a>
 	</div>
 </div>
 <mat-divider></mat-divider>
+<button (click)="showTheObj(locations$)">showTheObj</button>
+<button (click)="someEvent($event)">someEvent</button>
 <div class="home-title-flex-container mat-display-1">Latest Hunting Reports</div>
-<div class="home-subtitle-flex-container mat-body-1">Find expiring Covid-19 Vaccine Doses before they go to waste in Orange County, CA and the surrounding areas. <br />Going fast...get 'em while they're cold!</div>
+<div class="home-subtitle-flex-container mat-body-1">Find expiring Covid-19 Vaccine Doses before they go to waste in
+	Orange County, CA and the surrounding areas. <br />Going fast...get 'em while they're cold!</div>
 <mat-divider></mat-divider>
 <div *ngIf="locations$ | async as locations; else loading">
-<div *ngFor="let location of locations">
-	<mat-accordion>
-		<!-- #docregion basic-panel -->
-		<!-- #docregion hide-toggle -->
-		<mat-expansion-panel (opened)="panelOpenState = true"
-                       		 (closed)="panelOpenState = false">
-		  <!-- #enddocregion hide-toggle -->
-		  <mat-expansion-panel-header>
-			<mat-panel-title>
-				{{ location.lastUpdated || 'No Updates' }}
-			</mat-panel-title>
-			<mat-panel-description>
-				{{ location.address.city + ',' || ''}} {{ location.name || ''}} 
-			</mat-panel-description>
-		  </mat-expansion-panel-header>
-			<mat-list>
-				<mat-list-item>
-					<a href="tel:{{location.phone}}" matLine>
-						<button mat-icon-button aria-label="Call">
-						  <mat-icon>call</mat-icon>
-						</button>
-						<span> {{ location.phone || '-' }} </span>
-					</a>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-icon matListIcon>place</mat-icon>
-					<a href="https://www.google.com/maps/place/{{location.address.streetNumber + '+' + location.address.street + '+' + location.address.city + '+CA'}}" target="_blank" matLine> 
-					<p matLine> {{ location.address.streetNumber || '' }} {{ location.address.street || '' }}<br />
-						<span> {{ location.address.city + ', CA' || ''}} {{ location.address.zip || ''}} </span>
-					</p>
-					</a>
-				</mat-list-item>
-				<mat-list-item>
-					<a href="{{location.link}}" matLine>
-						<button mat-icon-button aria-label="Call">
-						  <mat-icon>link</mat-icon>
-						</button>
-						<span> {{ location.link || '-' }} </span>
-					</a>
-				</mat-list-item>
-			</mat-list>
-			<p>
-			Location Type: {{ location.locationType || '-'}} 
-			</p>
-			<p>
-			Hunting Reports:<br />
-			<span *ngFor="let note of location.notes">{{ note }}<br /></span>
-			<span *ngIf="location.notes.length == 0" class="no-skills">no notes</span>
-			</p>
-			
-		</mat-expansion-panel>
-	  </mat-accordion>
-</div>
+	<div *ngFor="let location of locations">
+		<mat-accordion>
+			<!-- #docregion basic-panel -->
+			<!-- #docregion hide-toggle -->
+			<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+				<!-- #enddocregion hide-toggle -->
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						{{ location.lastUpdated || 'No Updates' }}
+					</mat-panel-title>
+					<mat-panel-description>
+						{{ location.address.city + ',' || ''}} {{ location.name || ''}}
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<mat-list>
+					<mat-list-item>
+						<a href="tel:{{location.phone}}" matLine>
+							<button mat-icon-button aria-label="Call">
+								<mat-icon>call</mat-icon>
+							</button>
+							<span> {{ location.phone || '-' }} </span>
+						</a>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-icon matListIcon>place</mat-icon>
+						<a href="{{ address }}" target="_blank" matLine>
+							<p matLine> {{ location.address.streetNumber || '' }} {{ location.address.street || ''
+								}}<br />
+								<span> {{ location.address.city + ', CA' || ''}} {{ location.address.zip || ''}} </span>
+							</p>
+						</a>
+					</mat-list-item>
+				</mat-list>
+				<p>
+					Location Type: {{ location.locationType || '-'}}
+				</p>
+				<p>
+					Hunting Reports:<br />
+					<span *ngFor="let note of location.notes">{{ note }}<br /></span>
+					<span *ngIf="location.notes.length == 0" class="no-skills">no notes</span>
+				</p>
+
+			</mat-expansion-panel>
+		</mat-accordion>
+	</div>
 </div>
 
 <ng-template #loading>
 	<div class=" loading">
-	  <div class="lds-ripple">
-		<div></div>
-		<div></div>
-	  </div>
+		<div class="lds-ripple">
+			<div></div>
+			<div></div>
+		</div>
 	</div>
-  </ng-template>
+</ng-template>
 
 
 
