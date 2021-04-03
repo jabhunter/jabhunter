@@ -9,11 +9,8 @@
 	</div>
 </div>
 <mat-divider></mat-divider>
-<button (click)="showTheObj(locations$)">showTheObj</button>
-<button (click)="someEvent($event)">someEvent</button>
-<div class="home-title-flex-container mat-display-1">Latest Hunting Reports</div>
-<div class="home-subtitle-flex-container mat-body-1">Find expiring Covid-19 Vaccine Doses before they go to waste in
-	Orange County, CA and the surrounding areas. <br />Going fast...get 'em while they're cold!</div>
+<h1 class="home-title-flex-container mat-headline">Latest Hunting Reports</h1>
+<div class="home-subtitle-flex-container mat-body-1">Find expiring Covid-19 vaccine doses before they go to waste in Orange County, CA and the surrounding areas. <br />Going fast...get 'em while they're cold!</div>
 <mat-divider></mat-divider>
 <div *ngIf="locations$ | async as locations; else loading">
 	<div *ngFor="let location of locations">
