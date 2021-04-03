@@ -35,24 +35,23 @@ export class HomeComponent implements OnInit {
       "Active"
     );
 
+    this.displayedColumns = environment.table.sortColumns;
+  }
+
+  ngOnInit(): void {
+    this.getSubscriptions();
+    console.log(this.locations$);
+  }
+
+  getSubscriptions(): void {
     this.subscriptions = [
       this.locations$.subscribe(res => {
         console.log(res);
         this.dataSource = new MatTableDataSource(res)
         this.dataSource.sort = this.sort;
+        // this.dataSource.paginator = this.paginator;
       })
     ]
-
-    this.displayedColumns = ['name', 'city', 'dateContacted'];
-  }
-
-  ngOnInit(): void {
-    console.log(this.locations$);
-  }
-
-  ngAfterViewInit() {
-    //this.dataSource.sort = this.sort;
-    // this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(event: any) {

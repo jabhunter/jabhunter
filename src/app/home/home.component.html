@@ -13,19 +13,25 @@
 <div class="home-subtitle-flex-container mat-body-1">Find expiring Covid-19 vaccine doses before they go to waste in
   Orange County, CA and the surrounding areas. <br />Going fast...get 'em while they're cold!</div>
 <mat-divider></mat-divider>
-<div class="example-container mat-elevation-z8">
+<div class="example-container">
   <div class="example-header">
     <mat-form-field>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search">
     </mat-form-field>
   </div>
-  <div class="example-container mat-elevation-z8">
+  <div class="example-container">
     <mat-table #table [dataSource]="dataSource" matSort>
 
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header> name </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="vaccineBrands">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> vaccineBrands </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.vaccineBrands}} </mat-cell>
       </ng-container>
 
       <!-- Name Column -->
@@ -45,19 +51,20 @@
       <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
     </mat-table>
   </div>
-  <ng-template #loading>
-    <div class=" loading">
-      <div class="lds-ripple">
-        <div></div>
-        <div></div>
-      </div>
+</div>
+<ng-template #loading>
+  <div class=" loading">
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
     </div>
-  </ng-template>
+  </div>
+</ng-template>
 
 
 
 
-  <!-- 
+<!-- 
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
