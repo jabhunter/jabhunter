@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Location, locationAttributesMapping } from '../location.model';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -14,22 +14,25 @@ import "ag-grid-community/dist/styles/ag-theme-balham.css";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   panelOpenState = false;
   dataSource = new MatTableDataSource();
   locations$: Observable<Location[]>;
   displayedColumns: string[]
   spreadsheetId: string;
-  worksheetId: number;
-  googleStatus: string;
+  worksheetId: any;
+  googleStatus: any;
   filterSelectObj: any;
   filterValues: any;
+  subscriptions: Subscription[] = [];
+  data: Location[];
 
   constructor(private googleSheetsDbService: GoogleSheetsDbService, private sanitizer: DomSanitizer) {
     this.spreadsheetId = environment.locations.spreadsheetId;
     this.worksheetId = environment.locations.worksheetId;
     this.googleStatus = "Active";
-    this.displayedColumns = ['id', 'name'];
+    this.displayedColumns = ['id', 'name', 'address', 'lastUpdated', 'link', 'locationType', 'noteDates', 'notes', 'phone'];
+    this.data = [];
 
     this.locations$ = this.googleSheetsDbService.getActive<Location>(
       this.spreadsheetId,
@@ -37,53 +40,76 @@ export class HomeComponent implements OnInit {
       locationAttributesMapping,
       this.googleStatus
     );
+    this.getSubscriptions();
     this.filterSelectObj = [
       {
         name: 'ID',
         columnProp: 'id',
         options: []
-      }, {
+      },
+      {
         name: 'NAME',
         columnProp: 'name',
         options: []
-      }, {
-        name: 'USERNAME',
-        columnProp: 'username',
+      },
+      {
+        name: 'ADDRESS',
+        columnProp: 'address',
         options: []
-      }, {
-        name: 'EMAIL',
-        columnProp: 'email',
+      },
+      {
+        name: 'LASTUPDATED',
+        columnProp: 'lastUpdated',
         options: []
-      }, {
-        name: 'STATUS',
-        columnProp: 'status',
+      },
+      {
+        name: 'LINK',
+        columnProp: 'link',
         options: []
-      }
-    ]
+      },
+      {
+        name: 'LOCATIONTYPE',
+        columnProp: 'locationType',
+        options: []
+      },
+      {
+        name: 'NOTEDATES',
+        columnProp: 'noteDates',
+        options: []
+      },
+      {
+        name: 'NOTES',
+        columnProp: 'notes',
+        options: []
+      },
+      {
+        name: 'PHONE',
+        columnProp: 'phone',
+        options: []
+      },
+    ];
   }
 
   ngOnInit(): void {
     this.getRemoteData();
   }
 
-  getRemoteData() {
-
-    const remoteDummyData = [
-      {
-        "id": 1,
-        "name": "Leanne Graham",
-        "username": "Bret",
-        "email": "Sincere@april.biz",
-        "phone": "1-770-736-8031 x56442",
-        "website": "hildegard.org",
-        "status": "Active"
-      },
+  getSubscriptions(): void {
+    this.subscriptions = [
+      this.locations$.subscribe(res => {
+        this.data = res
+      })
     ];
-    this.dataSource.data = remoteDummyData;
+  }
+
+  getRemoteData(): void {
+    console.log("data", this.data);
+    this.dataSource.data = this.data;
+    console.log("data source", this.dataSource)
 
 
     this.filterSelectObj.filter((o: any) => {
-      o.options = this.getFilterObject(remoteDummyData, o.columnProp);
+      o.options = this.getFilterObject(this.data, o.columnProp);
     });
   }
 
@@ -149,5 +175,9 @@ export class HomeComponent implements OnInit {
       value.modelValue = undefined;
     })
     this.dataSource.filter = "";
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(x => x.unsubscribe())
   }
 }
