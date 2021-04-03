@@ -1,40 +1,59 @@
+import { SelectionRange } from "typescript";
+
 export const locationAttributesMapping = {
-  id: "ID",
-  name: "Name",
-  phone: "Phone Number",
-  address: {
-    _prefix: "Address",
-    street: "Street",
-    streetNumber: "Street Number",
-    zip: "Zip",
-    city: "City"
-  },
-  lastUpdated: "Last Updated",
-  notes: {
-    _prefix: "Note",
+  timestamp: "Timestamp",
+  contactMethod: "Contact Method",
+  links: {
+    _prefix: "Website Link",
     _listField: true
   },
-  noteDates: {
-    _prefix: "Note Date",
+  phoneNumbers: {
+    _prefix: "Phone",
     _listField: true
   },
+  email: "Email",
+  name: "Location Name",
+  streetAddress: "Street Address of Location",
+  city: "City", 
+  zip: "Zip Code",
+  reportType: "What Are You Hunting",
   locationType: "Location Type",
-  link: "Link"
+  eventStartDate: "Start Date of Event if applicable",
+  eventEndDate: "End Date of Event if applicable",
+  isVaccineInStock: "Is the Vaccine Currently in Stock Here",
+  vaccineBrands: "Vaccine Brands Offered",
+  isAppointmentOffered: "Does This Location Schedule Appointments",
+  daysOfWeekVaccineAvail: "Which Days of Week is Vaccine Available if applicable",
+  lastAppointmentOfDay: "Last Vaccine Appointment of the Day if applicable",
+  brandNameOfLocation: "Location Chain or Brand Name",
+  county: "County",
+  extraDosePolicy: "How Are Extra Vaccines Handled",
+  dateContacted: "Date Contacted",
+  note: "Note 1"
 };
 
 export interface Location {
-  id: string;
+  timestamp: string;
+  contactMethod: string;
+  links: string[];
+  phoneNumbers: string[];
+  email: string;
   name: string;
-  phone: string;
-  address: {
-    street: string;
-    streetNumber: string;
-    zip: string;
-    city: string;
-  };
-  lastUpdated: string;
-  notes: string[];
-  noteDates: string[];
+  streetAddress: string;
+  city: string;
+  zip: string,
+  reportType: string;
   locationType: string;
-  link: string;
+  eventStartDate: string;
+  eventEndDate: string;
+  isVaccineInStock: string;
+  vaccineBrands: string;
+  isAppointmentOffered: string;
+  daysOfWeekVaccineAvail: string;
+  lastAppointmentOfDay: string;
+  brandNameOfLocation: string;
+  county: string;
+  extraDosePolicy: string;
+  dateContacted: string;
+  note: string;
 }
