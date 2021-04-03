@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   locations: {
     spreadsheetId: '1m3cncWqu-6iLHG0u9kBc7fsTZV-LDHSe03kognRpQ7M',
-    worksheetId: 2,
+    worksheetId: 1,
   },
   firebase: {
     apiKey: 'AIzaSyAZXqRz-oQnLo_OUre3fzpx-VvtkO5k_Zw',
