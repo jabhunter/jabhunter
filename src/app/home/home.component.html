@@ -23,6 +23,12 @@
     <mat-table #table [dataSource]="dataSource" matSort>
 
       <!-- Name Column -->
+      <ng-container matColumnDef="dateContacted">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> dateContacted </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.dateContacted}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header> name </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
@@ -40,26 +46,20 @@
         <mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
       </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="dateContacted">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> dateContacted </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.dateContacted}} </mat-cell>
-      </ng-container>
-
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row> -->
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
     </mat-table>
   </div>
 </div>
-<ng-template #loading>
+<!-- <ng-template #loading>
   <div class=" loading">
     <div class="lds-ripple">
       <div></div>
       <div></div>
     </div>
   </div>
-</ng-template>
+</ng-template> -->
 
 
 

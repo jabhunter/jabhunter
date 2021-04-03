@@ -19,7 +19,7 @@ export const environment = {
     measurementId: 'G-RP681RL6MK'
   },
   table: {
-    sortColumns: ['name', 'vaccineBrands', 'city', 'dateContacted']
+    columns: ['dateContacted', 'name', 'vaccineBrands', 'city']
   }
 };
 

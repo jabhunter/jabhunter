@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
       "Active"
     );
 
-    this.displayedColumns = environment.table.sortColumns;
+    this.displayedColumns = environment.table.columns;
   }
 
   ngOnInit(): void {
