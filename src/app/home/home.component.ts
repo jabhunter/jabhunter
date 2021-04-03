@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
       })
     ]
 
-    this.displayedColumns = ['name', 'city'];
+    this.displayedColumns = ['name', 'city', 'dateContacted'];
   }
 
   ngOnInit(): void {
