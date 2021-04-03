@@ -28,6 +28,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RenameCovidComponent } from './renamecovid/renamecovid.component'
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   imports: [
     AngularFireAnalyticsModule,
@@ -40,7 +45,11 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     HttpClientModule,
     MaterialModule,
     NgxDocViewerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule,
+    MatSelectModule
   ],
   declarations: [
     AppComponent,
