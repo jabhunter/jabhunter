@@ -2,7 +2,8 @@
   margin: 6px;
 }
 
-a:link, a:visited {
+a:link,
+a:visited {
   text-decoration: none;
 }
 
@@ -32,7 +33,27 @@ a:link, a:visited {
   text-align: center;
   margin: 4% 2%;
 }
-  
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
 
 /*
 Copyright Google LLC. All Rights Reserved.

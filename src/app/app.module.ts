@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 import { HttpClientModule } from '@angular/common/http';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
@@ -27,6 +26,7 @@ import { HowToComponent } from './howto/howto.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RenameCovidComponent } from './renamecovid/renamecovid.component'
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -40,7 +40,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     HttpClientModule,
     MaterialModule,
     NgxDocViewerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     AppComponent,
