@@ -2,6 +2,7 @@ import { SelectionRange } from "typescript";
 
 export const locationAttributesMapping = {
   timestamp: "Timestamp",
+  guid: "Guid",
   contactMethod: "Contact Method",
   links: {
     _prefix: "Website Link",
@@ -34,6 +35,7 @@ export const locationAttributesMapping = {
 
 export interface Location {
   timestamp: string;
+  guid: string;
   contactMethod: string;
   links: string[];
   phoneNumbers: string[];
