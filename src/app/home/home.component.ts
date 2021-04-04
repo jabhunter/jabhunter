@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  locations: any;
 
   constructor(private googleSheetsDbService: GoogleSheetsDbService, private sanitizer: DomSanitizer) {
     this.spreadsheetId = environment.locations.spreadsheetId
@@ -51,11 +52,17 @@ export class HomeComponent implements OnInit {
     this.subscriptions = [
       this.locations$.subscribe(res => {
         console.log(res);
+        this.locations = res;
         this.dataSource = new MatTableDataSource(res)
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       })
     ]
+  }
+
+  changeData(locations: Location[]): any {
+
+
   }
 
   applyFilter(event: any) {
