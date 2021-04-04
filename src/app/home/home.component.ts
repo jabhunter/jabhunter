@@ -23,19 +23,23 @@ export class HomeComponent implements OnInit {
   subscriptions: Subscription[] = [];
   testArray: any;
   filterValue: any;
+  spreadsheetId: any;
+  worksheetId: any;
 
   @ViewChild(MatSort) sort!: MatSort;
-  //@ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   constructor(private googleSheetsDbService: GoogleSheetsDbService, private sanitizer: DomSanitizer) {
+    this.spreadsheetId = environment.locations.spreadsheetId
+    this.worksheetId = environment.locations.worksheetId
+    this.displayedColumns = environment.table.columns;
+
     this.locations$ = this.googleSheetsDbService.getActive<Location>(
-      environment.locations.spreadsheetId,
-      environment.locations.worksheetId,
+      this.spreadsheetId,
+      this.worksheetId,
       locationAttributesMapping,
       "Active"
     );
-
-    this.displayedColumns = environment.table.columns;
   }
 
   ngOnInit(): void {
@@ -49,7 +53,7 @@ export class HomeComponent implements OnInit {
         console.log(res);
         this.dataSource = new MatTableDataSource(res)
         this.dataSource.sort = this.sort;
-        // this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator = this.paginator;
       })
     ]
   }

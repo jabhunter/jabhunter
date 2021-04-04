@@ -13,59 +13,70 @@
 <div class="home-subtitle-flex-container mat-body-1">Find expiring Covid-19 vaccine doses before they go to waste in
   Orange County, CA and the surrounding areas. <br />Going fast...get 'em while they're cold!</div>
 <mat-divider></mat-divider>
-<div class="example-container">
-  <div class="example-header">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Search">
-    </mat-form-field>
-  </div>
-  <div class="example-container">
-    <mat-table #table [dataSource]="dataSource" matSort>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="dateContacted">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> dateContacted </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.dateContacted}} </mat-cell>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> name </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="vaccineBrands">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> vaccineBrands </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.vaccineBrands}} </mat-cell>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="city">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> city </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row> -->
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
-    </mat-table>
-  </div>
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
 </div>
-<!-- <ng-template #loading>
-  <div class=" loading">
-    <div class="lds-ripple">
-      <div></div>
-      <div></div>
-    </div>
+
+<div class="example-container">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="dateContacted">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> dateContacted </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.dateContacted}} </mat-cell>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="vaccineBrands">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Vaccine Brands </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.vaccineBrands}} </mat-cell>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> city </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row" [cdkDetailRow]="row"
+      [cdkDetailRowTpl]="tpl">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+
+<ng-template #tpl let-element>
+  <div class="mat-row detail-row" [@detailExpand] style="overflow: hidden">
+    <p>Phone</p>
+    <p>Address</p>
+    <p>Clinic Link</p>
+    <p>Location Type: Event
+
+      Vaccine Brands Offered: Johnson & Johnson
+
+      Location offers appointments: -
+
+      Time of last vaccine appointment: 16:00
+
+      County: Los Angeles
+
+      Date Contacted: 4/3/2021</p>
+    <p>
+      Hunting Report Notes:
+      L.A. County Supervisor Janice Hahn has partnered with FEMA and CAL/OES on a vaccine clinic in Hawaiian Gardens
+      that will be open through April 4 from 9:00 a.m. – 3:00 p.m. The vaccination is for individuals 50 and over and
+      the qualifying sectors that have already been established. Those who want a vaccination will have to call
+      562-402-8330 between the hours of 8 AM and 4 PM, there will be a Spanish interpreter available. The clinic is
+      sponsored by Supervisor Janice Hahn, FEMA, New Hope and the state of California.
+    </p>
   </div>
-</ng-template> -->
-
-
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->
+</ng-template>

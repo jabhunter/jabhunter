@@ -1,0 +1,101 @@
+    <mat-accordion>
+      <!-- #docregion basic-panel -->
+      <!-- #docregion hide-toggle -->
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <!-- #enddocregion hide-toggle -->
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ location.dateContacted || 'No Updates' }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ location.city + ',' || ''}} {{ location.name || ''}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <mat-list-item *ngFor="let phoneNumber of location.phoneNumbers">
+            <a href="tel:{{phoneNumber}}" matLine>
+              <button mat-icon-button aria-label="Call">
+                <mat-icon>call</mat-icon>
+              </button>
+              <span> {{ phoneNumber || '-' }} </span>
+            </a>
+          </mat-list-item>
+          <mat-list-item *ngIf="location.email.length > 0">
+            <a href="mailto: {{location.email}}" matLine>
+              <button mat-icon-button aria-label="Email">
+                <mat-icon>email</mat-icon>
+              </button>
+              <span> {{ location.email}}</span>
+            </a>
+          </mat-list-item>
+          <mat-list-item
+            *ngIf="location.city.length > 0 || location.streetAddress.length > 0 || location.zip.length > 0">
+            <mat-icon matListIcon>place</mat-icon>
+            <a href="https://www.google.com/maps/place/{{location.streetAddress + '+' + location.city + '+CA'}}"
+              target="_blank" matLine>
+              <p matLine> {{ location.streetAddress || '' }}<br />
+                <span *ngIf="location.city.length > 0"> {{ location.city + ', CA' || ''}}</span><span
+                  *ngIf="location.zip.length > 0"> {{ location.zip || '' }} </span>
+              </p>
+            </a>
+          </mat-list-item>
+          <mat-list-item *ngFor="let link of location.links">
+            <a href="{{link}}" matLine>
+              <button mat-icon-button aria-label="Call">
+                <mat-icon>link</mat-icon>
+              </button>
+              <span> {{ link || '-' }} </span>
+            </a>
+          </mat-list-item>
+        </mat-list>
+        <p>
+          <span class="mat-body-strong">Location Type:</span> {{ location.locationType || '-'}}
+        </p>
+        <p *ngIf="location.vaccineBrands.length > 0">
+          <span class="mat-body-strong">Vaccine Brands Offered:</span> {{ location.vaccineBrands }}
+        </p>
+        <p *ngIf="location.isAppointmentOffered.length > 0">
+          <span class="mat-body-strong">Location offers appointments:</span> {{ location.daysOfWeekVaccineAvail || '-'}}
+        </p>
+        <p *ngIf="location.daysOfWeekVaccineAvail.length > 0">
+          <span class="mat-body-strong">Days of the week vaccine is offered:</span>
+          {{ location.daysOfWeekVaccineAvail || '-'}}
+        </p>
+        <p *ngIf="location.lastAppointmentOfDay.length > 0">
+          <span class="mat-body-strong">Time of last vaccine appointment:</span>
+          {{ location.lastAppointmentOfDay || '-'}}
+        </p>
+        <p *ngIf="location.county.length > 0">
+          <span class="mat-body-strong">County:</span> {{ location.county || '-'}}
+        </p>
+        <p *ngIf="location.extraDosePolicy.length > 0">
+          <span class="mat-body-strong">Extra Dose Policy:</span> {{ location.extraDosePolicy || '-'}}
+        </p>
+        <p *ngIf="location.dateContacted.length > 0">
+          <span class="mat-body-strong">Date Contacted:</span> {{ location.dateContacted || '-'}}
+        </p>
+        <p><span class="mat-body-strong">Hunting Report Notes:</span>
+          <br />{{ location.note || '-'}}
+        </p>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="vaccineBrands">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> vaccineBrands </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.vaccineBrands}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> city </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
+    </ng-container>

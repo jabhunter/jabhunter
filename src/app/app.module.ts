@@ -26,8 +26,9 @@ import { HowToComponent } from './howto/howto.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RenameCovidComponent } from './renamecovid/renamecovid.component'
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
-import { MatTableDataSource } from '@angular/material/table';
-
+import { CdkDetailRowDirective } from './home/cdk-detail-row.directive';
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkTreeModule } from '@angular/cdk/tree';
 @NgModule({
   imports: [
     AngularFireAnalyticsModule,
@@ -53,10 +54,12 @@ import { MatTableDataSource } from '@angular/material/table';
     FooterComponent,
     SidenavListComponent,
     PageNotFoundComponent,
-    RenameCovidComponent
+    RenameCovidComponent,
+    CdkDetailRowDirective
   ],
   exports: [
-
+    CdkTableModule,
+    CdkTreeModule,
   ],
   providers: [GoogleSheetsDbService],
   bootstrap: [AppComponent]
