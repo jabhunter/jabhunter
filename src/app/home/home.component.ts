@@ -2,12 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 import { Observable, Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Location, locationAttributesMapping } from '../../model/location.model';
+import { Location } from '../../model/location.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { locationAttributesMapping } from 'src/model/location-attributes-mapping.model';
 
 @Component({
   selector: 'app-home',

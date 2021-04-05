@@ -15,27 +15,29 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Search">
     </mat-form-field>
   </div>
+
   <mat-table #table [dataSource]="dataSource" matSort>
 
-    <!-- Position Column -->
+    <ng-container matColumnDef="guid">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> guid </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.guid}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="dateContacted">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Date Contacted </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.dateContacted}} </mat-cell>
     </ng-container>
 
-    <!-- Position Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
     </ng-container>
 
-    <!-- Position Column -->
     <ng-container matColumnDef="vaccineBrands">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Vaccine Brands </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.vaccineBrands}} </mat-cell>
     </ng-container>
 
-    <!-- Position Column -->
     <ng-container matColumnDef="city">
       <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
@@ -45,12 +47,12 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row" [cdkDetailRow]="row"
       [cdkDetailRowTpl]="tpl">
     </mat-row>
+
   </mat-table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
 <!-- removed let-element  -->
-<!-- *ngFor="let location of locations$ | async" -->
-<ng-template #tpl>
+<ng-template #tpl let-element>
   <div class="mat-row detail-row" [@detailExpand] style="overflow: hidden">
     <mat-card class="example-card">
       <mat-card-header>
@@ -60,6 +62,7 @@
         <mat-card-subtitle>streetAddress, city, zipcode, county</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
+
         <p>
           <mat-icon>phone</mat-icon> 123-123-1234
         </p>

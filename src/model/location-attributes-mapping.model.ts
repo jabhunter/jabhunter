@@ -1,5 +1,3 @@
-import { SelectionRange } from "typescript";
-
 export const locationAttributesMapping = {
   timestamp: "Timestamp",
   guid: "Guid",
