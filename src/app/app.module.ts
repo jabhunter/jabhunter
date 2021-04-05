@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
-import { ExternalLinkDirective } from './external-link.directive';
+import { ExternalLinkDirective } from '../directive/external-link.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,7 +25,7 @@ import { HowToComponent } from './howto/howto.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RenameCovidComponent } from './renamecovid/renamecovid.component'
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
-import { CdkDetailRowDirective } from './home/cdk-detail-row.directive';
+import { CdkDetailRowDirective } from '../directive/cdk-detail-row.directive';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 @NgModule({
@@ -41,7 +41,7 @@ import { CdkTreeModule } from '@angular/cdk/tree';
     MaterialModule,
     NgxDocViewerModule,
     ReactiveFormsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
   ],
   declarations: [
     AppComponent,

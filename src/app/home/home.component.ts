@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 import { Observable, Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Location, locationAttributesMapping } from '../location.model';
+import { Location, locationAttributesMapping } from '../../model/location.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getSubscriptions();
     console.log(this.locations$);
+
   }
 
   getSubscriptions(): void {
@@ -61,6 +62,7 @@ export class HomeComponent implements OnInit {
       this.locations$.subscribe(res => {
         console.log(res);
         this.locations = res;
+        this.cardData(this.locations);
         this.dataSource = new MatTableDataSource(res)
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -69,7 +71,7 @@ export class HomeComponent implements OnInit {
     ]
   }
 
-  changeData(locations: Location[]): any {
+  cardData(locations: Location[]): any {
 
 
   }
