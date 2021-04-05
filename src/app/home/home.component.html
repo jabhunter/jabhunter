@@ -8,23 +8,18 @@
     <a mat-flat-button color="primary" routerLink="/howto">How to Hunt</a>
   </div>
 </div>
-<mat-divider></mat-divider>
 <h1 class="home-title-flex-container mat-headline">Latest Hunting Reports</h1>
-<div class="home-subtitle-flex-container mat-body-1">Find expiring Covid-19 vaccine doses before they go to waste in
-  Orange County, CA and the surrounding areas. <br />Going fast...get 'em while they're cold!</div>
-<mat-divider></mat-divider>
-<div class="example-header">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
-  </mat-form-field>
-</div>
-
-<div class="example-container">
+<div class="example-contaner">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search">
+    </mat-form-field>
+  </div>
   <mat-table #table [dataSource]="dataSource" matSort>
 
     <!-- Position Column -->
     <ng-container matColumnDef="dateContacted">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> dateContacted </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Date Contacted </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.dateContacted}} </mat-cell>
     </ng-container>
 
@@ -42,7 +37,7 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="city">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> city </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
     </ng-container>
 
@@ -53,10 +48,24 @@
   </mat-table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
-
-<ng-template #tpl let-element>
+<!-- removed let-element  -->
+<!-- *ngFor="let location of locations$ | async" -->
+<ng-template #tpl>
   <div class="mat-row detail-row" [@detailExpand] style="overflow: hidden">
-    <p>location.phone</p>
+    <div>
+      Test
+      <!-- <div>{{location.name}}</div>
+      <div>{{location.county}}</div>
+      <div>{{location.city}}</div>
+      <div>{{location.streetAddress}}</div>
+      <div>{{location.zip}}</div>
+      <div>{{location.vaccineBrands}}</div>
+      <div>{{location.note}}</div> -->
+    </div>
+    <!-- 
+
+      phoneNumbers
+      links
     <p>Address</p>
     <p>Clinic Link</p>
     <p>Location Type: Event
@@ -69,9 +78,6 @@
       Hunting Report Notes:
       L.A. County Supervisor Janice Hahn has partnered with FEMA and CAL/OES on a vaccine clinic in Hawaiian Gardens
       that will be open through April 4 from 9:00 a.m. – 3:00 p.m. The vaccination is for individuals 50 and over and
-      the qualifying sectors that have already been established. Those who want a vaccination will have to call
-      562-402-8330 between the hours of 8 AM and 4 PM, there will be a Spanish interpreter available. The clinic is
-      sponsored by Supervisor Janice Hahn, FEMA, New Hope and the state of California.
-    </p>
+    </p> -->
   </div>
 </ng-template>

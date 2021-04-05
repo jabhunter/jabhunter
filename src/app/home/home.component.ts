@@ -7,11 +7,19 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('void', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
+      state('*', style({ height: '*', visibility: 'visible' })),
+      transition('void <=> *', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class HomeComponent implements OnInit {
   panelOpenState = false;
@@ -56,6 +64,7 @@ export class HomeComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res)
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        console.log(this.dataSource);
       })
     ]
   }

@@ -2,12 +2,11 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
 import { ExternalLinkDirective } from './external-link.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { from } from 'rxjs';
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
@@ -42,6 +41,7 @@ import { CdkTreeModule } from '@angular/cdk/tree';
     MaterialModule,
     NgxDocViewerModule,
     ReactiveFormsModule,
+    NoopAnimationsModule
   ],
   declarations: [
     AppComponent,
@@ -55,7 +55,7 @@ import { CdkTreeModule } from '@angular/cdk/tree';
     SidenavListComponent,
     PageNotFoundComponent,
     RenameCovidComponent,
-    CdkDetailRowDirective
+    CdkDetailRowDirective,
   ],
   exports: [
     CdkTableModule,
