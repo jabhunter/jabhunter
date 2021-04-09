@@ -1,10 +1,10 @@
 # Jabhunter
 
-Powers [JabHunter.com](https://jabhunter.com/)
-Going fast...get 'em while they're cold!
-Find soon-to-expire and extra Covid-19 vaccine doses before they go to waste. View reports from other jab hunters in your local community about appointment availablily and soon-to-expire/extra dose policies for location vaccine providers such as pharmacies, clinics, events, hospitals, etc. For more information see [JabHunter's FAQ](https://jabhunter.com/faq)
+Powers [JabHunter.com](https://jabhunter.com/) - Going fast...get 'em while they're cold!
 
-The goal of this software is that it could be used to power a similar site in any community. The website pages use Google Docs, the data for the feed is supplied from a Google Sheet and the field reports about vaccine availablily in the community is powered by Google Forms.
+Find soon-to-expire and extra Covid-19 vaccine doses before they go to waste. View reports from other jab hunters in your local community about appointment availability and soon-to-expire/extra dose policies for local vaccine providers such as pharmacies, clinics, events, hospitals, etc. For more information see [JabHunter's FAQ](https://jabhunter.com/faq)
+
+The goal of this software is that it could be used to power a similar site in any community. The website pages use Google Docs, the data for the feed is supplied from a Google Sheet and the field reports about vaccine availability in the community is powered by Google Forms.
 
 Special thanks to [Franz Diebold]() for the [ng-google-sheets-db-library]() 
 
