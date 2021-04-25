@@ -29,7 +29,8 @@ export const locationAttributesMapping = {
   county: "County",
   extraDosePolicy: "How Are Extra Vaccines Handled",
   dateContacted: "Date Contacted",
-  note: "Note 1"
+  note: "Note 1",
+  Id: "Guid"
 };
 
 export interface Location {
@@ -56,4 +57,5 @@ export interface Location {
   extraDosePolicy: string;
   dateContacted: string;
   note: string;
+  Id: string
 }
