@@ -22,11 +22,13 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { FaqComponent } from './faq/faq.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { HeaderComponent } from './navigation/header/header.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent, TruncatePipe } from './home/home.component';
 import { HowToComponent } from './howto/howto.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RenameCovidComponent } from './renamecovid/renamecovid.component'
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { DetailViewComponent } from './detailed-view/detailed-view.component';
+
 
 @NgModule({
   imports: [
@@ -40,7 +42,8 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     HttpClientModule,
     MaterialModule,
     NgxDocViewerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   declarations: [
     AppComponent,
@@ -53,7 +56,9 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     FooterComponent,
     SidenavListComponent,
     PageNotFoundComponent,
-    RenameCovidComponent
+    RenameCovidComponent,
+    DetailViewComponent,
+    TruncatePipe
   ],
   exports: [
 

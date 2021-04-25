@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Location, locationAttributesMapping } from '../location.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
-})
+  })
 export class HomeComponent implements OnInit {
   panelOpenState = false;
   
@@ -38,5 +39,13 @@ export class HomeComponent implements OnInit {
 
   public executeSelectedChange = (event: any) => {
     console.log(event);
+  }
+  
+}
+
+@Pipe({name: 'truncate'})
+export class TruncatePipe implements PipeTransform {
+  transform(value: any) {
+    return value.split(' ').slice(0,15).join(' ') + '...';
   }
 }

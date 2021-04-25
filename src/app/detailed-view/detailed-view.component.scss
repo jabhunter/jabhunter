@@ -1,0 +1,47 @@
+.home-button-row .mat-button-base {
+    margin: 6px;
+  }
+  
+  a:link, a:visited {
+    text-decoration: none;
+  }
+  
+  .home-flex-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 6px;
+  }
+  
+  .home-mat-panel-description {
+    justify-content: left;
+  }
+  
+  .home-title-flex-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 4% 2%;
+  }
+  
+  .home-subtitle-flex-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    margin: 4% 2%;
+  }
+
+  .centerButton{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+  }
+  
+  /*
+  Copyright Google LLC. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at https://angular.io/license
+  */
